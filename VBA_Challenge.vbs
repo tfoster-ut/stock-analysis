@@ -40,9 +40,9 @@ Sub AllStocksAnalysisRefactored()
     RowCount = Cells(Rows.Count, "A").End(xlUp).Row
     
     '1a) Create a ticker Index
-    Dim tickerIndex As Integer
-    tickerIndex = 1
-        
+    For i = 0 To 11
+    tickerIndex = (i)
+    Next i        
     
     '1b) Create three output arrays
     Dim tickerVolumes As Long
@@ -50,7 +50,10 @@ Sub AllStocksAnalysisRefactored()
     Dim tickerEndingPrices As Single
        
     '2a) Initialize ticker volumes to zero
-    tickerVolumes = 0
+    For i = 0 To 11
+        tickerVolumes = 0
+    Next i
+    
     
     'Added integer definition to row counts
     Dim startRow, endRow As Integer
@@ -59,16 +62,14 @@ Sub AllStocksAnalysisRefactored()
     
     '2b) loop over all the rows
     For i = startRow To endRow
-    
+
         '3a) Increase volume for current ticker
-        'tickerVolumes(tickerIndex) = tickerVolumes(tickerIndex) + Cells(i, 8).Value
-        tickerVolumes = Cells(i, 8).Value + tickerVolumes
+        tickerVolumes(tickerIndex) = tickerVolumes(tickerIndex) + Cells(i, 8).Value
         
         '3b) Check if the current row is the first row with the selected tickerIndex.
         'If  Then
-        If Cells(i - 1, 1).Value <> tickerIndex And Cells(i, 1).Value = tickerIndex Then
-        'If tickerIndex = tickerIndex Then
-            tickerIndex = tickerIndex + 1
+        'If Cells(i - 1, 1).Value <> tickerIndex And Cells(i, 1).Value = tickerIndex Then
+        If tickerIndex = tickerIndex Then
             tickerStartingPrices = Cells(i, 6).Value
             
         
@@ -76,20 +77,16 @@ Sub AllStocksAnalysisRefactored()
         
         '3c) check if the current row is the last row with the selected ticker
         'If  Then
-        If Cells(i + 1, 1).Value <> tickerIndex And Cells(i, 1).Value = tickerIndex Then
-        'If tickerIndex <> tickerIndex Then
+        'If Cells(i + 1, 1).Value <> tickerIndex And Cells(i, 1).Value = tickerIndex Then
+        If tickerIndex <> tickerIndex Then
+            tickerEndingPrices = Cells(i, 6).Value
 
             '3d Increase the tickerIndex.
             tickerIndex = tickerIndex + 1
-            tickerEndingPrices = Cells(i, 6).Value
             
-        'End If
         End If
-        
-        
-    
+
     Next i
-    
  
     '4) Loop through your arrays to output the Ticker, Total Daily Volume, and Return.
     For i = 0 To 11
