@@ -18,7 +18,7 @@ Sub AllStocksAnalysisRefactored()
     Cells(3, 3).Value = "Return"
 
     'Initialize array of all tickers
-    Dim tickers(12) As String
+    Dim tickers(0 To 11) As String
     
     tickers(0) = "AY"
     tickers(1) = "CSIQ"
@@ -40,20 +40,18 @@ Sub AllStocksAnalysisRefactored()
     RowCount = Cells(Rows.Count, "A").End(xlUp).Row
     
     '1a) Create a ticker Index
-    For i = 0 To 11
-    tickerIndex = (i)
-    Next i        
+    Dim tickerIndex As Integer
+    tickerIndex = 0
     
     '1b) Create three output arrays
-    Dim tickerVolumes As Long
-    Dim tickerStartingPrices As Single
-    Dim tickerEndingPrices As Single
+    Dim tickerVolumes(12) As Long
+    Dim tickerStartingPrices(12) As Single
+    Dim tickerEndingPrices(12) As Single
        
     '2a) Initialize ticker volumes to zero
     For i = 0 To 11
-        tickerVolumes = 0
+        tickerVolumes(i) = 0
     Next i
-    
     
     'Added integer definition to row counts
     Dim startRow, endRow As Integer
@@ -67,34 +65,27 @@ Sub AllStocksAnalysisRefactored()
         tickerVolumes(tickerIndex) = tickerVolumes(tickerIndex) + Cells(i, 8).Value
         
         '3b) Check if the current row is the first row with the selected tickerIndex.
-        'If  Then
-        'If Cells(i - 1, 1).Value <> tickerIndex And Cells(i, 1).Value = tickerIndex Then
-        If tickerIndex = tickerIndex Then
-            tickerStartingPrices = Cells(i, 6).Value
+        If Cells(i - 1, 1).Value <> tickers(tickerIndex) And Cells(i, 1).Value = tickers(tickerIndex) Then
+            tickerStartingPrices(tickerIndex) = Cells(i, 6).Value
             
-        
         End If
         
         '3c) check if the current row is the last row with the selected ticker
-        'If  Then
-        'If Cells(i + 1, 1).Value <> tickerIndex And Cells(i, 1).Value = tickerIndex Then
-        If tickerIndex <> tickerIndex Then
-            tickerEndingPrices = Cells(i, 6).Value
-
-            '3d Increase the tickerIndex.
+        If Cells(i + 1, 1).Value <> tickers(tickerIndex) And Cells(i, 1).Value = tickers(tickerIndex) Then
+            tickerEndingPrices(tickerIndex) = Cells(i, 6).Value
+        '3d Increase the tickerIndex.
             tickerIndex = tickerIndex + 1
-            
         End If
 
     Next i
- 
+        
     '4) Loop through your arrays to output the Ticker, Total Daily Volume, and Return.
     For i = 0 To 11
         
         Worksheets("AllStocksAnalysis").Activate
-        Cells(4 + i, 1).Value = tickerIndex
-        Cells(4 + i, 2).Value = tickerVolumes
-        Cells(4 + i, 3).Value = tickerEndingPrices / tickerStartingPrices - 1
+        Cells(4 + i, 1).Value = tickers(i)
+        Cells(4 + i, 2).Value = tickerVolumes(i)
+        Cells(4 + i, 3).Value = tickerEndingPrices(i) / tickerStartingPrices(i) - 1
         
     Next i
     
