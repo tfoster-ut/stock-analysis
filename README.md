@@ -14,15 +14,18 @@ The goal of this analysis to analyze the performance of a particular stock.  We 
 When running the 2017 and 2018 analysis with our original code it took .71 seconds.  When we run the same data set with our refactored code the time to run the code drops too .14 and .24 respectively.  The code run time may appear to be marginal at first glance but as the data set continues to grow and/or more stocks are added this improved speed and refactored script will make run time substantially faster.  The key difference between the two codes is the steps required to analyze the data set.  Our first code operates within a nested loop whereas our refactored code is processing through an index that references and array.  There was no need to use a nested loop for this refactored code.  
 
 **Original Code**
-![](Resources\VBA_Module_Code.PNG)
+
+![](Resources/VBA_Module_Code.PNG)
 
 **Refactored Code**
-![](Resources\VBA_Challenge_Code.PNG)
+
+![](Resources/VBA_Challenge_Code.PNG)
 
 **Run Time on Refactored Code (2017 & 2018)**
-![](Resources\VBA_Challenge_2017.png)
 
-![](Resources\VBA_Challenge_2018.png)
+![](Resources/VBA_Challenge_2017.png)
+
+![](Resources/VBA_Challenge_2018.png)
 
 **Stock Comparison**
 
