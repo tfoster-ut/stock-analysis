@@ -28,16 +28,18 @@ In comparing the performance of the stocks within our dataset we can clearly see
 
 ## Summary
 
-** - What are the advantages or disadvantages of refactoring code?
-    ** Advantages **
+**- What are the advantages or disadvantages of refactoring code?**
+
+    **Advantages**
     * Easier to read
     * Improved effeciency
     * Organized
 
-    ** Disadvantages **
+    **Disadvantages**
     * Injecting bugs when none existed before
     * Can be difficult to discern what is what without comments
     * Net result may not be worth the time spent
 
-** - How do these pros and cons apply to refactoring the original VBA script?
+**- How do these pros and cons apply to refactoring the original VBA script?**
+
     The original code was pretty well organized but did lack some efficiency with the nested loop and not using an index.  The refactored code is very easy to read by allowing the code to reference a named index/array we can discern more quickly what it is we are trying to accomplish within the code.  The argument could be made that the time it took to refactor this code was not worth the time it saved in efficiency, however, if the dataset were to exponentially grow then we could assume that the time saved on performance justified the refactoring.  I injected plenty of bugs while refactoring and it took time to resolve each one.   
