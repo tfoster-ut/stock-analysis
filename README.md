@@ -5,13 +5,13 @@ An analysis of stock data utilizing VBA
 During this analysis, we sought to create an easy to run analysis of all stocks in 2017 and 2018.  There was a particular emphasis on knowing the performance of the DQ stock, but this was later rolled up into an analysis of all stocks.
 
 ### Purpose 
-The goal of this analysis to analyze the performance of a particular stock.  We did this by looking specifically at the annualized return based on the starting price and the closing price of the stock.  This will provide a year-over-year comparison that allows us to look at the performance of a particular stock through the previous/current year(s) and future years to come.  
+The goal of this analysis was to analyze the performance of a particular stock.  We did this by looking specifically at the annualized return based on the starting price and the closing price of the stock.  This will provide a year-over-year comparison that allows us to look at the performance of a particular stock through the previous/current year(s) and future years to come.  
 
 ## Results
 ###
 **Code Comparison**
 
-When running the 2017 and 2018 analysis with our original code it took .71 seconds.  When we run the same data set with our refactored code the time to run the code drops too .14 and .24 respectively.  The code run time may appear to be marginal at first glance but as the data set continues to grow and/or more stocks are added this improved speed and refactored script will make run time substantially faster.  The key difference between the two codes is the steps required to analyze the data set.  Our first code operates within a nested loop whereas our refactored code is processing through an index that references and array.  There was no need to use a nested loop for this refactored code.  
+When running the 2017 and 2018 analysis with our original code it took .71 seconds.  When we run the same data set with our refactored code the time to run the code drops too .14 and .24 respectively.  The code run time may appear to be marginal at first glance but as the data set continues to grow and/or more stocks are added this improved speed and refactored script will make run time substantially faster.  The key difference between the two codes is the steps required to analyze the data set.  Our first code operates within a nested loop whereas our refactored code is processing through an index that references an array.  There was no need to use a nested loop for this refactored code which results in less processing requirements from the system.  
 
 **Original Code**
 
